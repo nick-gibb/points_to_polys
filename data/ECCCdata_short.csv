@@ -1,0 +1,15 @@
+CGNDB_ID,CGNDB_ID_2,GEONAME,GEONAME_2,PROV_TERR,LOCATION,LATITUDE,LONGITUDE,GENERIC,CONCISE,REL_SCALE,FEATURE_ID
+EHZOX,,Sainte-Perp�tue (L'Islet),Sainte-Perp�tue (L'Islet),QC,Sainte-Perp�tue; L'Islet,47.0584503,-69.9287945,Municipality,VILG,50000,2d754963be4d11d892e2080020a0f4c9
+EHZOY,,Sainte-Perp�tue (Nicolet-Yamaska),Sainte-Perp�tue (Nicolet-Yamaska),QC,Sainte-Perp�tue; Nicolet-Yamaska,46.0828076,-72.4645553,Parish Municipality,VILG,250000,2d7c9c64be4d11d892e2080020a0f4c9
+CBQOF,,Caledonia (Queens),Caledonia (Queens),NS,Queens,44.37285988,-65.02892739,Community,UNP,1000000,43490db8affc11d892e2080020a0f4c9
+CBQOG,,Caledonia (Guysborough),Caledonia (Guysborough),NS,Guysborough,45.28200015,-62.39277511,Community,UNP,1000000,43894b09affc11d892e2080020a0f4c9
+CBHBJ,,Salt Springs (Antigonish),Salt Springs (Antigonish),NS,Antigonish,45.59034842,-62.00188326,Community,UNP,250000,ea17f91aafe911d892e2080020a0f4c9
+CBHBH,,Salt Springs (Pictou),Salt Springs (Pictou),NS,Pictou,45.53698913,-62.89571427,Community,UNP,250000,e9d37608afe911d892e2080020a0f4c9
+EHZKU,,Sainte-Jeanne-d'Arc (La Mitis),Sainte-Jeanne-d'Arc (La Mitis),QC,Sainte-Jeanne-d'Arc; La Mitis,48.494487,-67.9577875,Parish Municipality,VILG,50000,1e2aa4a7be4d11d892e2080020a0f4c9
+EJJGI,,Sainte-Jeanne-d'Arc (Drummond),Sainte-Jeanne-d'Arc (Drummond),QC,Lefebvre; Drummond,45.7114229,-72.4120552,Village,UNP,250000,03cd0336bf9111d892e2080020a0f4c9
+EHZKV,,Sainte-Jeanne-d'Arc (Maria-Chapdelaine),Sainte-Jeanne-d'Arc (Maria-Chapdelaine),QC,Sainte-Jeanne-d'Arc; Maria-Chapdelaine,48.86567298,-72.08558719,Village Municipality,TOWN,1000000,1e318278be4d11d892e2080020a0f4c9
+EIAJZ,,Saint-Louis-de-Gonzague (Les Etchemins),Saint-Louis-de-Gonzague (Les Etchemins),QC,Saint-Louis-de-Gonzague; Les Etchemins,46.26773045,-70.32991361,Municipality,VILG,50000,9395163cbe4d11d892e2080020a0f4c9
+EIAKA,,Saint-Louis-de-Gonzague (Beauharnois-Salaberry),Saint-Louis-de-Gonzague (Beauharnois-Salaberry),QC,Saint-Louis-de-Gonzague; Beauharnois-Salaberry,45.21665477,-73.99428996,Parish Municipality,VILG,1000000,957a29edbe4d11d892e2080020a0f4c9
+DAIJQ,,South Branch (Kent),South Branch (Kent),NB,Kent,46.53629293,-64.90974207,Dispersed Rural Community,UNP,250000,aef70710d05211d892e2080020a0f4c9
+DAIJP,,South Branch (Kings),South Branch (Kings),NB,Kings,45.74817005,-65.28969552,Dispersed Rural Community,UNP,250000,0c7bc156849c20c3b257330b8635ff60
+IAQDC,,Keg River (1-101-23-W5),Keg River (1-101-23-W5),AB,1-101-23-W5,57.74595477,-117.6103992,Locality,UNP,250000,c1d4975ac6cd11d892e2080020a0f4c9
