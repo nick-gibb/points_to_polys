@@ -24,6 +24,9 @@ RUN /opt/conda/bin/pip install pylint geopandas
 
 RUN conda install -c conda-forge descartes
 
+RUN git config --global user.email "nicholas.gibb@canada.ca"
+RUN git config --global user.name "Nicholas Gibb"
+
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
