@@ -1,2 +1,6 @@
 places_to_HRs_*.csv
 .vscode/
+hr_fluwatchers.csv
+data/fsa_to_hr/
+expanded_dataframe.csv
+*.ipynb
