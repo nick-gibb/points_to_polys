@@ -20,7 +20,7 @@ RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then /opt/conda/bin/conda env up
     && rm -rf /tmp/conda-tmp
 
 # Install pylint
-RUN /opt/conda/bin/pip install pylint geopandas
+RUN /opt/conda/bin/pip install pylint geopandas azure-storage-blob
 
 RUN conda install -c conda-forge descartes
 
