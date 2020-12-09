@@ -88,8 +88,8 @@ def export_data(df_expanded, df_hr, hr_path, correspondence_path):
     epi_week = get_epi_week(hr_path)
     expanded_df_filename = output_folder.joinpath(
         'reference', f'{epi_week}_expanded_df_{correspondence_path.stem}.csv')
-    hr_fluwatchers_filename = output_folder.joinpath(
-        f'{epi_week}_hr_fluwatchers_{correspondence_path.stem}.csv')
+    # hr_fluwatchers_filename = output_folder.joinpath(f'{epi_week}_hr_fluwatchers_{correspondence_path.stem}.csv')
+    hr_fluwatchers_filename = 'hr_fluwatchers.csv'
     df_hr.to_csv(hr_fluwatchers_filename)  # export HR-level results
     # export base dataframe, for reference
     df_expanded.to_csv(expanded_df_filename)
