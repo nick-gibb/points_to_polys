@@ -123,16 +123,13 @@ def append_canada(df_hr, df_canada):
     return df_hr
 
 def upload_data(connstring):
-    container_name = 'fluwatch'
+    container_name = 'fluwatchers'
     local_file_name = "hr_fluwatchers.csv"
 
     print('step 1')    # Create the BlobServiceClient object which will be used to create a container client
     blob_service_client = BlobServiceClient.from_connection_string(connstring)
 
-    print('step 2')    # Connect to the container
-    container_client = blob_service_client.get_container_client(container_name)
-
-    print('step 3')    # Create a blob client using the local file name as the name for the blob
+    print('step 2')    # Create a blob client using the local file name as the name for the blob
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
     
     print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)    # Upload the created file
@@ -156,7 +153,6 @@ def main(fluwatch, correspondence, connstring):
     df_canada = get_canada_df(df_fluwatch)
     df_hr = append_canada(df_hr, df_canada)
     export_data(df_expanded, df_hr, fluwatch_path, correspondence_path)
-
     upload_data(connstring)
 
 
