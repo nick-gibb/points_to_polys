@@ -24,8 +24,8 @@ RUN /opt/conda/bin/pip install pylint geopandas azure-storage-blob
 
 RUN conda install -c conda-forge descartes
 
-RUN git config --global user.email "nicholas.gibb@canada.ca"
-RUN git config --global user.name "Nicholas Gibb"
+RUN git config --global user.email "srt749@gmail.com"
+RUN git config --global user.name "srt749"
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

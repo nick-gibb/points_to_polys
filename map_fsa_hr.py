@@ -6,6 +6,9 @@ import sys
 import numpy as np
 import pandas as pd
 
+# python v12 connect to azure
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -13,11 +16,13 @@ def load_data(fluwatch, correspondence):
     """ Loads the fluwatch data (FSA-level), the reference file (from Yann), and the FSA population lookup dataframe """
     logging.info("Loading data...")
     # Load fluwatch data
-    fluwatch_filepath = os.path.join('data', 'fsa_to_hr', fluwatch)
+    # fluwatch_filepath = os.path.join('data', 'fsa_to_hr', fluwatch)
+    fluwatch_filepath = fluwatch
     df_fluwatch = pd.read_csv(fluwatch_filepath, index_col='FSA')
 
     # Load boundaries and population data (from Yann)
-    df_filepath = os.path.join('data', 'fsa_to_hr', correspondence)
+    # df_filepath = os.path.join('data', 'fsa_to_hr', correspondence)
+    df_filepath = correspondence
     df = pd.read_csv(df_filepath, encoding='latin1')
 
     # Get populations of FSA from pivot table
@@ -117,10 +122,38 @@ def append_canada(df_hr, df_canada):
     df_hr = df_hr.append(df_canada)
     return df_hr
 
+# def upload_data(connstring):
+
+
+
 @click.command()
 @click.option('-f', '--fluwatch', required=True, type=click.Path(exists=True), help='Path to Fluwatch data at forward sorting area level.')
 @click.option('-c', '--correspondence', default='/workspaces/hrs_fsa/data/fsa_to_hr/DA_FSA_HR_07132020.csv', show_default=True, required=True, type=click.Path(exists=True), help='Path to correspondence file prepared by Yann.')
-def main(fluwatch, correspondence):
+@click.option('-k', '--connstring', type=str)
+def main(fluwatch, correspondence, connstring):
+    container_name = 'fluwatch'
+    local_file_name = "hr_fluwatchers.csv"
+
+    print('step 1')    # Create the BlobServiceClient object which will be used to create a container client
+    blob_service_client = BlobServiceClient.from_connection_string(connstring)
+
+    print('step 2')    # Connect to the container
+    container_client = blob_service_client.get_container_client(container_name)
+
+    print('step 3')    # Create a blob client using the local file name as the name for the blob
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
+
+    # print("\nListing blobs...")    # List the blobs in the container
+    # blob_list = container_client.list_blobs()
+    # for blob in blob_list:
+    #     print("\t" + blob.name)
+
+    print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)    # Upload the created file
+
+    with open(local_file_name, "rb") as data:
+        blob_client.upload_blob(data)
+
+
     fluwatch_path = Path(fluwatch)
     correspondence_path = Path(correspondence)
     logging.info(f"Processing using input {correspondence}")
@@ -131,6 +164,8 @@ def main(fluwatch, correspondence):
     df_canada = get_canada_df(df_fluwatch)
     df_hr = append_canada(df_hr, df_canada)
     export_data(df_expanded, df_hr, fluwatch_path, correspondence_path)
+
+    # upload_data(connstring)
 
 
 if __name__ == "__main__":
