@@ -122,15 +122,7 @@ def append_canada(df_hr, df_canada):
     df_hr = df_hr.append(df_canada)
     return df_hr
 
-# def upload_data(connstring):
-
-
-
-@click.command()
-@click.option('-f', '--fluwatch', required=True, type=click.Path(exists=True), help='Path to Fluwatch data at forward sorting area level.')
-@click.option('-c', '--correspondence', default='/workspaces/hrs_fsa/data/fsa_to_hr/DA_FSA_HR_07132020.csv', show_default=True, required=True, type=click.Path(exists=True), help='Path to correspondence file prepared by Yann.')
-@click.option('-k', '--connstring', type=str)
-def main(fluwatch, correspondence, connstring):
+def upload_data(connstring):
     container_name = 'fluwatch'
     local_file_name = "hr_fluwatchers.csv"
 
@@ -142,18 +134,18 @@ def main(fluwatch, correspondence, connstring):
 
     print('step 3')    # Create a blob client using the local file name as the name for the blob
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
-
-    # print("\nListing blobs...")    # List the blobs in the container
-    # blob_list = container_client.list_blobs()
-    # for blob in blob_list:
-    #     print("\t" + blob.name)
-
+    
     print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)    # Upload the created file
 
     with open(local_file_name, "rb") as data:
         blob_client.upload_blob(data)
 
 
+@click.command()
+@click.option('-f', '--fluwatch', required=True, type=click.Path(exists=True), help='Path to Fluwatch data at forward sorting area level.')
+@click.option('-c', '--correspondence', default='/workspaces/hrs_fsa/data/fsa_to_hr/DA_FSA_HR_07132020.csv', show_default=True, required=True, type=click.Path(exists=True), help='Path to correspondence file prepared by Yann.')
+@click.option('-k', '--connstring', type=str)
+def main(fluwatch, correspondence, connstring):
     fluwatch_path = Path(fluwatch)
     correspondence_path = Path(correspondence)
     logging.info(f"Processing using input {correspondence}")
@@ -165,7 +157,7 @@ def main(fluwatch, correspondence, connstring):
     df_hr = append_canada(df_hr, df_canada)
     export_data(df_expanded, df_hr, fluwatch_path, correspondence_path)
 
-    # upload_data(connstring)
+    upload_data(connstring)
 
 
 if __name__ == "__main__":
