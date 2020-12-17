@@ -135,9 +135,8 @@ def upload_data(connstring):
     print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)    # Upload the created file
 
     with open(local_file_name, "rb") as data:
-        blob_client.upload_blob(data)
-
-
+        blob_client.upload_blob(data, Overwrite = True)
+        
 @click.command()
 @click.option('-f', '--fluwatch', required=True, type=click.Path(exists=True), help='Path to Fluwatch data at forward sorting area level.')
 @click.option('-c', '--correspondence', default='/workspaces/hrs_fsa/data/fsa_to_hr/DA_FSA_HR_07132020.csv', show_default=True, required=True, type=click.Path(exists=True), help='Path to correspondence file prepared by Yann.')
