@@ -114,7 +114,7 @@ def get_epi_week(fluwatch_path):
 
 def get_canada_df(df_fluwatch):
     canada_participants, canada_confirmed_positive = df_fluwatch[['participants', 'confirmed_pos']].sum().values
-    df_canada = pd.DataFrame([[canada_participants, canada_confirmed_positive]], columns=list(['participants', 'confirmed_positive']), index=['Canada'])
+    df_canada = pd.DataFrame([[canada_participants, canada_confirmed_positive]], columns=list(['participants', 'confirmed_positive']), index=['1'])
     df_canada.index.name = 'HR_UID'
     return df_canada
 
